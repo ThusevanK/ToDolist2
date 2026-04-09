@@ -8,23 +8,23 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class LoginController {
+    public static String emailValide;
     @FXML
     private TextField emailField;
     @FXML
     private PasswordField passwordField;
     @FXML
     private Label errorLabel;
-    protected static String emailValide ="thusevan@gmail.com";
-    protected String mdpValide ="thusevan";
     @FXML
     protected void onConnexionClick(){
         String email = emailField.getText();
         String mdp = passwordField.getText();
-        if(email.equals(emailValide) && mdp.equals(mdpValide) ){
-            System.out.println("connexion reussie");
-            errorLabel.setText("");
+        if(email.isEmpty() || mdp.isEmpty() ){
+            errorLabel.setText("\"Veuillez remplir tous les champs obligatoire\"");
+        }else if(email.equals("mail123@gmail.com") && mdp.equals("Azerty1234")){
+            errorLabel.setText("connexion reussi");
         }else{
-            errorLabel.setText("mdp ou/et mail qui est incorrect");
+            errorLabel.setText("Les informations sont incompletes");
         }
     }
     @FXML
